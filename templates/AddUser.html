@@ -1,0 +1,79 @@
+{%extends "layout.html" %}
+{% block content %}
+<h1> View and Add Users</h1>
+<table id=table1 style="width: auto;" class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">User ID </th>
+            <th style="width: 50%">email </th>
+            <th style="width: 10%">Salary Code</th>
+            <th style="width: 15%">role</th>
+            <th style="width: 15%">active</th>
+        </tr>
+    </thead>
+    {% for item in users%}
+    <tr>
+        <td>{{item[0]}} </td>
+        <td>{{item[1]}} </td>
+        <td>{{item[2]}} </td>
+        <td>{{item[3]}} </td>
+        <td>{{item[4]}} </td>
+    </tr>
+
+    {%endfor%}
+</table>
+<hr>
+<hr>
+<h4> Add a new User</h4>
+<form method="POST" action="/AddUsers">
+    <label for="letters">Email ID </label><br>
+    <input type="text" value="" name="email" /><br><br>
+
+    <label for="filtertext">Salary Code</label><br>
+    <input type="text" value="" name="SalC" /><br>
+    <br>
+    <input type="submit" value="Add User" name="addcmp" />
+</form>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#table1').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+                'copy',
+                {
+                    extend: 'csv',
+                    filename: 'Projects'
+                },
+                {
+                    extend: 'excel',
+                    filename: 'Projects',
+                    title: 'Projects',
+                    messageTop: null,
+
+                },
+                {
+                    extend: 'pdf',
+                    filename: 'Projects',
+                    title: 'Projects',
+                    messageBottom: null
+                },
+                {
+                    extend: 'print',
+                    title: 'Projects',
+                    messageTop: null,
+                    messageBottom: null
+                }
+            ]
+        });
+        //for more customizations
+        // $('#table1').DataTable({
+        //             pageLength: 100,
+        //             ordering: false
+        //         });
+    });
+
+</script>
+{% endblock content %}

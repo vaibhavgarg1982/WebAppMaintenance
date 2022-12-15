@@ -1,0 +1,74 @@
+{%extends "layout.html" %}
+{% block content %}
+<h1> View all Complaints</h1>
+<table id=table1 style="width: auto;" class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Complaint ID </th>
+            <th style="width: 50%">Complaint </th>
+            <th style="width: 10%">Status <br> Comments</th>
+            <th style="width: 15%">OpenDate<br> Creater</th>
+            <th style="width: 15%">CloseDate</th>
+        </tr>
+    </thead>
+    {% for item in complaints%}
+    <tr>
+        {% if item[4] == 'open' %}
+        <td style="color: red;">{{item[1]}} </td>
+        <td style="color: red;">{{item[2]}} <br> {{item[3]}}</td>
+        {% else %}
+        <td>{{item[1]}} </td>
+        <td>{{item[2]}} <br> {{item[3]}}</td>
+        {% endif %}
+
+        <td>{{item[4]}} <br> {{item[7]}}</td>
+        <td>{{item[5]}} <br>{{item[0]}}</td>
+        <td>{{item[6]}} </td>
+
+    </tr>
+
+    {%endfor%}
+</table>
+<hr>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#table1').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+                'copy',
+                {
+                    extend: 'csv',
+                    filename: 'Complaints'
+                },
+                {
+                    extend: 'excel',
+                    filename: 'Complaints',
+                    title: 'Complaints',
+                    messageTop: null,
+
+                },
+                {
+                    extend: 'pdf',
+                    filename: 'Complaints',
+                    title: 'Complaints',
+                    messageBottom: null
+                },
+                {
+                    extend: 'print',
+                    title: 'Complaints',
+                    messageTop: null,
+                    messageBottom: null
+                }
+            ]
+        });
+        //for more customizations
+        // $('#table1').DataTable({
+        //             pageLength: 100,
+        //             ordering: false
+        //         });
+    });
+
+</script>
+{% endblock content %}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"> </script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js">   </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-dark bg-primary sticky-top">
+        <div class="container-fluid">
+            <a href="/about" class="navbar-brand">
+                <h5>Maintence Management</h5>
+            </a>
+            <small class="ml-auto text-white">{{ current_user.id}}</small> <br>
+            <!-- Navbar content -->
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="min-height:600px">
+            <div class="col-2 px-1 bg-light" id="sticky-sidebar">
+                <div class="position-fixed">
+
+                    <a href="/AddComplaint">View/add Complaints</a><br>
+                    <a href="/ResolveComplaint">Resolve Complaints</a><br>
+                    <a href="/ViewComplaint">View all Complaints</a><br>
+                    <a href="/AddUsers">View and Add Users</a><br>
+                    <a href="/logout"> LOGOUT</a>
+                </div>
+            </div>
+            <div class="col-9" id="main">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

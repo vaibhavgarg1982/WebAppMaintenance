@@ -1,0 +1,79 @@
+{%extends "layout.html" %}
+{% block content %}
+<h1> View and Add Your Complaints</h1>
+<table id=table1 style="width: auto;" class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Complaint ID </th>
+            <th style="width: 50%">Complaint </th>
+            <th style="width: 10%">Status <br> Comments</th>
+            <th style="width: 15%">OpenDate<br> Creater</th>
+            <th style="width: 15%">CloseDate<br> Closer</th>
+        </tr>
+    </thead>
+    {% for item in complaints%}
+    <tr>
+        <td>{{item[1]}} </td>
+        <td>{{item[2]}} <br> {{item[3]}}</td>
+        <td>{{item[4]}} <br> {{item[7]}}</td>
+        <td>{{item[5]}} <br>{{item[0]}}</td>
+        <td>{{item[6]}} </td>
+    </tr>
+
+    {%endfor%}
+</table>
+<hr>
+<hr>
+<h4> Add a new Complaint</h4>
+<form method="POST" action="/AddComplaint">
+    <label for="letters">Complaint about? </label><br>
+    <input type="text" value="" name="about" /><br><br>
+
+    <label for="filtertext">Describe the issue</label><br>
+    <textarea cols=50 value="" name="Complaint" /></textarea><br>
+    <br>
+    <input type="submit" value="Add Complaint" name="addcmp" />
+</form>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#table1').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+                'copy',
+                {
+                    extend: 'csv',
+                    filename: 'Projects'
+                },
+                {
+                    extend: 'excel',
+                    filename: 'Projects',
+                    title: 'Projects',
+                    messageTop: null,
+
+                },
+                {
+                    extend: 'pdf',
+                    filename: 'Projects',
+                    title: 'Projects',
+                    messageBottom: null
+                },
+                {
+                    extend: 'print',
+                    title: 'Projects',
+                    messageTop: null,
+                    messageBottom: null
+                }
+            ]
+        });
+        //for more customizations
+        // $('#table1').DataTable({
+        //             pageLength: 100,
+        //             ordering: false
+        //         });
+    });
+
+</script>
+{% endblock content %}
