@@ -25,16 +25,24 @@
 <hr>
 <hr>
 <h4> Add a new Complaint</h4>
-<form method="POST" action="/AddComplaint">
+<form method="POST" action="/AddComplaint" onsubmit="return disableForm(this)">
     <label for="letters">Complaint about? </label><br>
     <input type="text" value="" name="about" /><br><br>
 
     <label for="filtertext">Describe the issue</label><br>
     <textarea cols=50 value="" name="Complaint" /></textarea><br>
     <br>
-    <input type="submit" value="Add Complaint" name="addcmp" />
+    <input type="submit" value="Add Complaint" name="addcmp" id="submit-button" />
 </form>
 
+<script>
+    function disableForm(form) {
+        document.getElementById("submit-button").disabled = true;
+        // write disabled to console
+        console.log("disabled");
+        return true;
+    }
+</script>
 
 <script type="text/javascript">
 
